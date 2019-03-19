@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-{% block title %}<title>Magazine</title>{%endblock%}
+{% block title %}Magazine{%endblock%}
 	{%block carousel_cantant%}
 		<div id="owl-carousel-1" class="owl-carousel owl-theme center-owl-nav">
 			<!-- ARTICLE -->
@@ -16,7 +16,7 @@
 					</ul>
 					<h2 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h2>
 					<ul class="article-meta">
-						<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
+						<li><i class="fa fa-clock-o"></i> {{list.created_date|date:"M   d, Y"}}</li>
 						<li><i class="fa fa-comments"></i> 33</li>
 					</ul>
 				</div>
@@ -37,17 +37,17 @@
 				<div class="row">
 						<div class="col-md-12">
 							<div class="section-title">
-									<h2 class="title">Trending Posts</h2>
+								<h2 class="title">Trending Posts</h2>
 
-									<!--########list trend###########-->
-									{{navbar.title}}
-									<ul class="tab-nav pull-right">
-										<li class="active"><a data-toggle="tab" href="#tab1">All</a></li>
-										{% for name in navbar%}
-											<li><a data-toggle="tab" href={{name.pk}}>{{name}}</a></li>
+								<!--########list trend###########-->
+								{{navbar.title}}
+								<ul class="tab-nav pull-right">
+									<li class="active"><a data-toggle="tab" href="#tab1">All</a></li>
+									{% for name in navbar%}
+										<li><a data-toggle="tab" href={{name.slug}}>{{name}}</a></li>
 
-										{%endfor%}
-			</ul>
+									{%endfor%}
+								</ul>
 								
 							</div>
 							
@@ -155,7 +155,7 @@
 					<div class="article-body">
 						<h3 class="article-title"><a href={{list.pk}}>Duis urbanitas eam in, tempor consequat.</a></h3>
 						<ul class="article-meta">
-							<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
+							<li><i class="fa fa-clock-o"></i> {{list.created_date|date:"M d, Y"}}</li>
 							<li><i class="fa fa-comments"></i> 33</li>
 						</ul>
 						<p>Populo tritani laboramus ex mei, no eum iuvaret ceteros euripidis, ne alia sadipscing mei. Te inciderint cotidieque pro, ei iisque docendi qui, ne accommodare theophrastus reprehendunt vel. Et commodo menandri eam.</p>
@@ -173,7 +173,7 @@
 					<div class="article-body">
 						<h4 class="article-title"><a href="#">Duis urbanitas eam in, tempor consequat.</a></h4>
 						<ul class="article-meta">
-							<li><i class="fa fa-clock-o"></i> January 31, 2017</li>
+							<li><i class="fa fa-clock-o"></i> {{list.created_date|date:"M d, Y"}}</li>
 							<li><i class="fa fa-comments"></i> {{forloop.counter}}   33</li>
 						</ul>
 					</div>

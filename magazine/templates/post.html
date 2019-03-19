@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
-
-{% block title %}<title>News</title>{%endblock%}
+{% load static %}
+{% block title %}{{title}}{%endblock%}
 
 		
 	
@@ -11,7 +11,32 @@
 		
 
 	{%block body_cantant%}
-		
-	{%endblock%}
+	{% for list in trading_post%}
+	<div class="section-title">
+		<h2 class="title">{{title}}</h2>
+	</div>
+
+	<article class="article row-article">
+		<div class="article-img">
+			<a href="#">
+				<img src="{{MEDIA_URL}}{{list.image.url}} " alt="">
+			</a>
+		</div>
+		<div class="article-body">
+			<ul class="article-info">
+				<li class="article-category"><a href="#">{{list.title}}</a></li>
+				<li class="article-type"><i class="fa fa-file-text"></i></li>
+			</ul>
+			<h3 class="article-title"><a href="#">{{list.description}}</a></h3>
+			<ul class="article-meta">
+				<li><i class="fa fa-clock-o"></i> {{list.created_date|date:"M d, Y"}}</li>
+				<li><i class="fa fa-comments"></i> 33</li>
+			</ul>
+			<p>Populo tritani laboramus ex mei, no eum iuvaret ceteros euripidis, ne alia sadipscing mei. Te inciderint cotidieque pro, ei iisque docendi qui.</p>
+		</div>
+	</article>
+	{%endfor%}
+
+{%endblock%}
 		
 	
