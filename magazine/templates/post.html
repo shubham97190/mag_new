@@ -11,9 +11,10 @@
 		
 
 	{%block body_cantant%}
-	{% for list in trading_post%}
+	{% for list in category_article%}
+	
 	<div class="section-title">
-		<h2 class="title">{{title}}</h2>
+		<h2 class="title">{{list.categary}}</h2>
 	</div>
 
 	<article class="article row-article">

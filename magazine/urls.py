@@ -15,13 +15,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import index,get_article
+from .views import get_article,ArticleCreate
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',index,name="index"),
+    # path('',index,name="index"),
+    path('',ArticleCreate.as_view(),name='index'),
     path('<slug>',get_article,name="get_article"),
    
    
