@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     # path('',index,name="index"),
     path('',ArticleCreate.as_view(),name='index'),
-    path('registration',UserCreate.as_view(),name="registration"),
+    path('registration',UserCreate,name="registration"),
     path('<slug>',ArticleViews.as_view(),name="get_article"),
    
 ]

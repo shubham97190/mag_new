@@ -4,7 +4,7 @@ function reg(){
         type:'GET',
         datatype:'html',
         success:function(response){
-            $('#reg_form .reg_form').html(response);
+            $('#reg_form .form').html(response);
         },
         error:function(error){
             console.log(error);
