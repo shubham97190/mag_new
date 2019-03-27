@@ -25,8 +25,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',ArticleCreate.as_view(),name='index'),
     path('registration',usercreate,name="registration"),
-    path('acc/login/',auth_views.auth_login,name="login"),
+    path('login',login,name="login"),
     path('<slug>',ArticleViews.as_view(),name="get_article"),
+    path('category/category/<slug>',ArticleViews.as_view(),name="get_article"),
     
    
 ]
