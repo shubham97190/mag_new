@@ -1,37 +1,24 @@
-<div class="modal fade" id="login_form" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                <h4 class="modal-title" id="myModalLabel">Log In</h4>
+<form method="post">
+    <div class="modal-body">
+        <div class="col-md-12 col-xs-12 login_control">
+           
+                {% csrf_token %}
+            <div class="control">
+                    <div class="label">Email Address</div>
+                    <input type="text" class="form-control" value=""/>
             </div>
             
-                <div class="modal-body">
-                    <div class="col-md-12 col-xs-12 login_control">
-                        <form method="post">
-                            {% csrf_token %}
-                        <div class="control">
-                                <div class="label">Email Address</div>
-                                <input type="text" class="form-control" value=""/>
-                        </div>
-                        
-                        <div class="control">
-                                <div class="label">Password</div>
-                                <input type="password" class="form-control" value=""/>
-                        </div>
-                            
-                        
-                    </div>
-                </div>
-
-                <div class="modal-footer" >
-                    <button class="btn btn-orange">LOGIN</button>
-                </div>
-
-            </form>
-
+            <div class="control">
+                    <div class="label">Password</div>
+                    <input type="password" class="form-control" value=""/>
+            </div>
+                
+            
         </div>
-
     </div>
 
-</div>
+    <div class="modal-footer" >
+        <button class="btn btn-orange">LOGIN</button>
+    </div>
+
+</form>

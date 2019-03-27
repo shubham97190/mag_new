@@ -1,33 +1,31 @@
 {% load add_tags %}
-
-
 <div class="control">
     <div class="label">First Name</div>
     {{form.first_name|add_attr:"class:form-control"}}  
 </div>
- 
-<div class="control">
+
+ <div class="control">
     <div class="label">Last Name</div>
     {{form.last_name|add_attr:"class:form-control"}}  
 </div>
 
 <div class="control">
     <div class="label">User Name</div>
-    {{form.user_name|add_attr:"class:form-control"}}  
+    {{form.username|add_attr:"class:form-control"}}  
 </div>
 
 <div class="control">
     <div class="label">Email Address</div>
-    {{form.e_mail|add_attr:"class:form-control"}}  
+    {{form.email|add_attr:"class:form-control"}}  
 </div>
 
 <div class="control">
     <div class="label">Password</div>
-    {{form.password|add_attr:"class:form-control"}}  
+    {{form.password1|add_attr:"class:form-control"}}  
 </div>
-
+    
 
 <div class="control">
-        <div class="label">Confirm Password</div>
-        {{form.Confirm_password|add_attr:"class:form-control"}}  
+    <div class="label">Confirm Password</div>
+    {{form.password2|add_attr:"class:form-control"}}  
 </div>

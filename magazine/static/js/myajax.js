@@ -11,13 +11,13 @@ function reg(){
         }
     });
 }
-function reg1(){
+function login(){
     $.ajax({
-        url:'/registration',
-        type:'POST',
+        url:'acc/login/',
+        type:'GET',
         datatype:'html',
         success:function(response){
-           
+            $('#reg_form .form').html(response);
         },
         error:function(error){
             console.log(error);

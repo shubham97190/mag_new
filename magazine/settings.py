@@ -148,4 +148,9 @@ USE_L10N = True
 
 USE_TZ = True
 
-AUTH_USER_MODEL = 'article.User'
+# AUTH_USER_MODEL = 'article.User'
+EMAIL_HOST = 'mail.24livehost.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'wwwsmtp@24livehost.com'
+EMAIL_HOST_PASSWORD = 'dsmtp909#'
+EMAIL_USE_TLS = True

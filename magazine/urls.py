@@ -15,16 +15,19 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from .views import ArticleViews,ArticleCreate,UserCreate
+from .views import ArticleViews,ArticleCreate,usercreate,login
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
+# from django.contrib.auth.views import LoginView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('',index,name="index"),
     path('',ArticleCreate.as_view(),name='index'),
-    path('registration',UserCreate,name="registration"),
+    path('registration',usercreate,name="registration"),
+    path('acc/login/',auth_views.auth_login,name="login"),
     path('<slug>',ArticleViews.as_view(),name="get_article"),
+    
    
 ]
 if settings.DEBUG:
