@@ -7,12 +7,13 @@ from django.core.mail import send_mail
 from django.conf import settings
 from django.contrib.auth.views import auth_login
 from django.contrib.auth import authenticate
+from django.contrib.sites.shortcuts import get_current_site
+from article.views import mail
 
 # Create your views here.
 
 
 class ArticleCreate(TemplateView):
-
     template_name = 'index.html'
 
     def get_context_data(self, **kwargs):
@@ -21,40 +22,40 @@ class ArticleCreate(TemplateView):
         context['trading_post'] = Article.objects.all()[:4]
         return context
 
-
 class ArticleViews(TemplateView):
     template_name = 'post.html'
 
     def get_context_data(self, *args,**kwargs):
         context = super(ArticleViews,self).get_context_data(*args,**kwargs)
         cat_title = Category.objects.filter(slug=kwargs['slug'])
-        print(cat_title)
+       
         context['navbar'] = Category.objects.all()
         context['trading_post'] = Article.objects.all()[:4]
-        context['category_article'] = Article.objects.filter(categary=cat_title)
+        context['category_article'] = Article.objects.filter(categary=cat_title[0])
         context['title']=kwargs['slug']
        
         return context 
-
 
 def usercreate(request):
     if request.method == 'POST':
         form = Registration(request.POST)
         kwargs={}
+        
+        current_site=get_current_site(request)
+        kwargs['domain']=current_site.domain
         if form.is_valid():
-            # form.save()
+            user=form.save(commit=False)
+            user.is_staff = False
+            user.save()
             email = request.POST.get('email')
-            
             kwargs['email']=email
-            kwargs["user"]=""
-            print(kwargs['email'])
-            # mail(**kwargs)
+            args=user
+            mail(args,**kwargs)
             return HttpResponse('Sucess')
     else:
         form= Registration()
     print(form.errors)
     return render(request, 'registration.html', {'form' : form})
-
 
 def login(request):
     if request.method == 'POST':
@@ -62,7 +63,7 @@ def login(request):
         password = request.POST.get('password')
         user = authenticate(username=username, password=password)
         # print("They used username: {} and password: {}".format(username,password))
-        # print(user)
+       
         if user:
             if user.is_staff:
                 auth_login(request,user)

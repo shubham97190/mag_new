@@ -19,6 +19,7 @@ from .views import ArticleViews,ArticleCreate,usercreate,login
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth import views as auth_views
+from article  import views as art_view
 # from django.contrib.auth.views import LoginView
 
 urlpatterns = [
@@ -27,7 +28,10 @@ urlpatterns = [
     path('registration',usercreate,name="registration"),
     path('login',login,name="login"),
     path('<slug>',ArticleViews.as_view(),name="get_article"),
+    path('account_activation_sent', art_view.account_activation_sent, name='account_activation_sent'),
     path('category/category/<slug>',ArticleViews.as_view(),name="get_article"),
+    path('activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})',
+        art_view.activate, name='activate'),
     
    
 ]
