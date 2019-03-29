@@ -254,3 +254,11 @@ box-shadow:         0px 0px 8px 0px rgba(50, 50, 50, 0.54);
 </div>
  -->
  {% load add_tags %}
+
+ {% autoescape off %}
+ Hi {{ user.get_full_name }},
+
+ Please click on the link below to confirm your registration:
+ <a href="http://{{ domain }}{% url 'activate' uidb64=uid token=token %}">Activate Account</a>
+
+{% endautoescape %}

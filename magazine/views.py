@@ -2,9 +2,6 @@ from django.shortcuts import render, HttpResponse
 from article.models import Article,Category
 from django.views.generic.base import TemplateView
 from .forms import Registration
-from django.contrib.auth.forms import UserCreationForm
-from django.core.mail import send_mail
-from django.conf import settings
 from django.contrib.auth.views import auth_login
 from django.contrib.auth import authenticate
 from django.contrib.sites.shortcuts import get_current_site
@@ -40,7 +37,7 @@ def usercreate(request):
     if request.method == 'POST':
         form = Registration(request.POST)
         kwargs={}
-        
+        #print('---------------------',args[0].pk,urlsafe_base64_encode(force_bytes(args[0].pk)),urlsafe_base64_decode(force_bytes(args[0].pk)))
         current_site=get_current_site(request)
         kwargs['domain']=current_site.domain
         if form.is_valid():
