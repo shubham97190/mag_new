@@ -30,7 +30,7 @@ urlpatterns = [
     path('<slug>',ArticleViews.as_view(),name="get_article"),
     path('account_activation_sent', art_view.account_activation_sent, name='account_activation_sent'),
     path('category/category/<slug>',ArticleViews.as_view(),name="get_article"),
-    path('activate/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})',
+    path('activate/?P<uidb64>[A-Za-z_\-]+/?P<token>[A-Za-z]{1,13}-[A-Za-z]{1,20}',
         art_view.activate, name='activate'),
     
    
